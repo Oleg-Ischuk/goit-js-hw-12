@@ -13,8 +13,8 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 let currentPage = 1;
 let currentQuery = '';
+let totalHits = 0;
 
-const gallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
 const input = document.querySelector('input[name="searchQuery"]');
 const loadMoreBtn = document.querySelector('.btn-load-more');
@@ -40,6 +40,7 @@ async function onSearch(event) {
 
   currentPage = 1;
   clearGallery();
+  toggleLoadMoreButton(false);
   addLoader();
   await fetchAndRenderImages();
 }
@@ -54,16 +55,28 @@ async function onLoadMore() {
 async function fetchAndRenderImages() {
   try {
     const data = await fetchImages(currentQuery, currentPage);
-    renderImages(data.hits);
+    totalHits = data.totalHits;
 
-    if (currentPage === 1) {
-      toggleLoadMoreButton(true);
+    if (data.hits.length === 0) {
+      iziToast.warning({
+        title: `No results`,
+        message: `No images found for "${currentQuery}". Please try another query.`,
+        position: 'topRight',
+        backgroundColor: 'orange',
+        messageColor: 'white',
+        titleColor: 'white',
+      });
+      toggleLoadMoreButton(false);
+      return;
     }
 
-    if (data.totalHits <= currentPage * 12) {
+    renderImages(data.hits);
+
+    const isEndOfCollection = currentPage * 40 >= totalHits;
+    if (isEndOfCollection) {
       toggleLoadMoreButton(false);
       iziToast.info({
-        title: `Info`,
+        title: `End of results`,
         position: 'topRight',
         message: "We're sorry, but you've reached the end of search results.",
         backgroundColor: 'green',

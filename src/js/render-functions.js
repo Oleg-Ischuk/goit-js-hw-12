@@ -5,6 +5,8 @@ let lightbox;
 
 export function renderImages(images) {
   const gallery = document.querySelector('.gallery');
+  const loader = document.querySelector('.loader');
+
   const markup = images
     .map(
       ({
@@ -48,6 +50,8 @@ export function renderImages(images) {
     .join('');
 
   gallery.insertAdjacentHTML('beforeend', markup);
+
+  gallery.parentNode.insertBefore(loader, gallery.nextSibling);
 
   if (!lightbox) {
     lightbox = new SimpleLightbox('.gallery a', {
