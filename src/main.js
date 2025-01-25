@@ -79,7 +79,7 @@ async function fetchAndRenderImages() {
         title: `End of results`,
         position: 'topRight',
         message: "We're sorry, but you've reached the end of search results.",
-        backgroundColor: 'green',
+        backgroundColor: 'blue',
         messageColor: 'white',
         titleColor: 'white',
       });
