@@ -72,7 +72,7 @@ async function fetchAndRenderImages() {
 
     renderImages(data.hits);
 
-    const isEndOfCollection = currentPage * 40 >= totalHits;
+    const isEndOfCollection = currentPage * 15 >= totalHits;
     if (isEndOfCollection) {
       toggleLoadMoreButton(false);
       iziToast.info({
