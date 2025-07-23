@@ -22,5 +22,56 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  padding: 20px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  min-width: 320px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== TABLET STYLES ===== */
+@media only screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  body {
+    padding: 40px;
+  }
+}
+
+/* ===== DESKTOP STYLES ===== */
+@media only screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 100px;
+  }
+
+  body {
+    padding: 60px;
+  }
+}
+
+/* ===== EXTRA LARGE DESKTOP ===== */
+@media only screen and (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

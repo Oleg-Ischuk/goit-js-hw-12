@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Task 12</title>
+    <title>Home Task 12 - Responsive Gallery</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -13,20 +13,26 @@
   </head>
 
   <body>
-    <form class="search-form">
-      <input
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-      <button class="btn-form" type="submit">Search</button>
-    </form>
-    <span class="loader is-hidden"></span>
-    <ul class="gallery"></ul>
-    <div class="container-load-more">
-      <button class="btn-load-more" style="display: none">Load more</button>
+    <div class="container">
+      <form class="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button class="btn-form" type="submit">Search</button>
+      </form>
+
+      <span class="loader is-hidden"></span>
+
+      <ul class="gallery"></ul>
+
+      <div class="container-load-more">
+        <button class="btn-load-more" style="display: none">Load more</button>
+      </div>
     </div>
+
     <script type="module" src="./main.js"></script>
   </body>
 </html>
